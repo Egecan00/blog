@@ -45,7 +45,7 @@ class LoginController extends Controller
 
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-           return redirect()->intended('product');
+           return redirect()->intended('blog');
         }
 
        return redirect()->back()->withErrors([
