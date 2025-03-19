@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \ 
     libjpeg62-turbo-dev \ 
     libfreetype6-dev \ 
+    libicu-dev \          
+    libzip-dev \
     locales \ 
     zip \ 
     jpegoptim optipng pngquant gifsicle \ 
@@ -13,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     unzip \ 
     git \ 
     curl \ 
-    && docker-php-ext-install pdo_mysql 
+    && docker-php-ext-install pdo_mysql intl
  
 # Composer'ı yükleyin 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer 
