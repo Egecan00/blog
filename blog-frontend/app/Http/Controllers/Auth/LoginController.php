@@ -30,11 +30,11 @@ class LoginController extends Controller
         if ($response->successful() && isset($response['token'])) {  
             session(['api_token' => 'Bearer '.$response['token']]); 
 
-            return redirect('/product')->with('success', 'Başarıyla giriş yapıldı!'); 
+            return redirect('/blog')->with('success', 'Başarıyla giriş yapıldı!'); 
         } 
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('product');
+            return redirect()->intended('blog');
         }
 
         return redirect()->back()->withErrors([

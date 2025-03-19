@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/blog', function () {
+    return view('/blog.index');
+}); 
 
 Route::get('/index', function () {
     return view('/index');
@@ -22,9 +26,9 @@ Route::get('/login', function () {
 }); 
 
 
+Route::get('/blog',[PostController::class,'index'])->name('blog.index');
 
 
-Route::resource('product', ProductController::class);
 
 
 

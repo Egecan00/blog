@@ -18,11 +18,10 @@ class ProductController extends Controller
     {
         $token = session('api_token');
         
-
         if (!$token) {
             return redirect('/index')->with('error', 'Lütfen giriş yapınız.');
         }
-
+        
         $page = $request->input('page', 1);
         $perPage = 10; // Sayfa başına ürün sayısı
 
