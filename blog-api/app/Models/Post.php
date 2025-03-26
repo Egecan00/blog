@@ -14,6 +14,7 @@ class Post extends Model
         'image',
         'status'
     ];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
@@ -23,4 +24,15 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
