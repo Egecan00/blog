@@ -10,9 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-50">
-    <!-- Navbar -->
-    <nav class="bg-slate-800 shadow-lg">
+<body class="bg-gray-50 pt-16">
+    <!-- navbar üst -->
+    <nav class="bg-slate-800 shadow-lg fixed top-0 left-0 right-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -49,7 +49,7 @@
         </div>
     </nav>
 
-    <!-- Hata Mesajları -->
+    <!-- hata Mesajları -->
     @if($errors->any())
         <div class="max-w-7xl mx-auto px-4 mt-4">
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -60,29 +60,36 @@
         </div>
     @endif
 
-    <!-- İçerik Container -->
+    <!-- post Container -->
+     
     <div class="max-w-7xl mx-auto px-4 mt-8">
         @php
             $postsList = $posts['posts'] ?? [];
         @endphp
-
+    
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
             @if(!empty($postsList) && count($postsList) > 0)
                 @foreach($postsList as $post)
+                
                     <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                        <img src="{{ $post['image'] }}" 
+                    <a href="{{route ('blog.show',$post['id']) }}">
+                    <img src="{{ ('http://localhost:8000'.'/'. $post['image']) }}" 
                              alt="{{ $post['title'] }}" 
                              class="w-full h-48 object-cover">
-                        
+                    </a>
                         <div class="p-6">
-                            <a href=''>
+                            <a href="{{route ('blog.show',$post['id']) }}">  
+                                
                             <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-indigo-600 transition-colors">
                                 {{ $post['title'] }}
                             </h2>
                             </a>
+                            <a href="{{route ('blog.show',$post['id']) }}">
                             <p class="text-gray-600 leading-relaxed">
                                 {{ Str::limit(strip_tags($post['content']), 40) }}
                             </p>
+                            </a>
                         </div>
                     </article>
                 @endforeach

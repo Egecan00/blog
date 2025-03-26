@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
@@ -27,6 +28,9 @@ Route::get('/login', function () {
 
 
 Route::get('/blog',[PostController::class,'index'])->name('blog.index');
+Route::get('blog/{id}',[PostController::class,'show'])->name('blog.show');
+// Route::post('blog/{id}',[PostController::class,'store'])->name('post.store');
+Route::post('blog/{id}/comments',[PostController::class,'store'])->name('comments.store');
 
 
 

@@ -24,10 +24,50 @@ class PostController extends Controller
         // $response = Http::timeout(1000)->withToken($token)->get('http://nginx_api/api/blog');
         $posts = $response->json();
         return view('blog.index', compact('posts'));
+       
     }
 
-    public function show()
+    public function show($id)
     {
+        $token = session('api_token');
+        
+        if (!$token) {
+            return redirect('/index')->with('error', 'Lütfen giriş yapınız.');
+        }
+
+        // $response = Http::withToken($token)
+        // ->get(env('API_URL') . '/blog/',);
+
+        $response = Http::timeout(1000)->withToken($token)->get('http://nginx_api/api/blog/'.$id);
+
+        $id= $response->json();
+        // $comment= $response->json();
+
+        // return view('blog.show', compact('post'));
+
+        return view('blog.show',[
+            'post' => $id,
+            'comments'=> $id['comments'] ?? []
+        ]);
+
+    }
+
+    public function store(Request $request,$id)
+    {
+        $token = session('api_token');
+
+        $response = Http::timeout(1000)->withToken($token)->post("http://nginx_api/api/blog/{$id}/comments",[
+            'content'=> $request->input('content'),
+            'post_id'=> $id
+        
+        ]);
+        
+        $post = $response->json();
+
+        return view('blog.show',[
+            'post' => $post,
+            'comments'=> $post['comments'] ?? []
+        ]);
         
     }
     
