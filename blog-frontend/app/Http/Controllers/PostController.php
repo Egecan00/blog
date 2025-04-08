@@ -59,10 +59,12 @@ class PostController extends Controller
         $response = Http::timeout(1000)->withToken($token)->post("http://nginx_api/api/blog/{$id}/comments",[
             'content'=> $request->input('content'),
             'post_id'=> $id
-        
         ]);
         
-        $post = $response->json();
+
+        $postResponse = Http::timeout(1000)->withToken($token)->get("http://nginx_api/api/blog/{$id}");
+        $post = $postResponse->json();
+      
 
         return view('blog.show',[
             'post' => $post,

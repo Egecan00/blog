@@ -119,7 +119,7 @@
             @csrf
             <div class="mb-4">
                 <textarea 
-                    name="body" 
+                    name="content" 
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('body') border-red-500 @enderror" 
                     rows="4" 
                     placeholder="Yorumunuzu buraya yazın..."
