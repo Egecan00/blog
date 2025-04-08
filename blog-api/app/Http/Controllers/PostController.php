@@ -43,7 +43,7 @@ class PostController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'content'=> 'required|string|max:255',
-            'post_id'=> 'required|exists:post,id',
+            'post_id'=> 'required|exists:posts,id',
         ]);
 
         $comment = Comment::create([
@@ -52,6 +52,7 @@ class PostController extends Controller
            'post_id'=>$request->post_id,
            'user_id'=>$request->user()->id,
         ]);
+        
 
           return response()->json([
             'message'=>'Yorumunuz Gönderildi!',
