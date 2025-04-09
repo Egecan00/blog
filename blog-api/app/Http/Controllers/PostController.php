@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http; // Http sınıfını ekleyin
+use Illuminate\Support\Facades\Http; 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,15 +15,13 @@ class PostController extends Controller
 
     public function index()
     {
-        // $posts = Post::orderBy('created_at','desc')->get();
-        // $post = Post::all();
+       
         $post = Post::with('categories','tags','comments')->get();
         $post = Post::where('status',true)->latest()->get();
-        // $comment = Comment::where('status',true)->latest()->get();
+      
       
         return response()->json([
             'posts' => $post,
-            // 'comments' => $comment
         ], 200);
 
     }
@@ -59,7 +57,7 @@ class PostController extends Controller
             'comment'=> $comment
         ],200);
 
-    //    return back()->with('success','Yorumunuz Gönderildi!');
+ 
 
     }
         

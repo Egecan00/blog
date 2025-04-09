@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\PostResource;
@@ -26,7 +27,8 @@ Route::middleware('auth:sanctum')->group(function (){ //bu grubun içindeki tüm
     // Route::post('blog/{id}',[PostController::class,'store'])->name('post.store');
     Route::post('blog/{id}/comments',[PostController::class,'store'])->name('comments.store');  
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    
+    Route::put('profile',[ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'show']);
  });
 
     Route::get('/', function () {
