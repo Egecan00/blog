@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
@@ -26,14 +27,12 @@ Route::get('/login', function () {
     return view('/login');
 }); 
 
-
+Route::put('profile',[ProfileController::class, 'update'])->name('profile.update');
+Route::get('profile', [ProfileController::class, 'show']);
 Route::get('/blog',[PostController::class,'index'])->name('blog.index');
 Route::get('blog/{id}',[PostController::class,'show'])->name('blog.show');
 // Route::post('blog/{id}',[PostController::class,'store'])->name('post.store');
 Route::post('blog/{id}/comments',[PostController::class,'store'])->name('comments.store');
-
-
-
 
 
 // Kayıt sayfası için rota

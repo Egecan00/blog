@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http; // Http sınıfını ekleyin
+use Illuminate\Support\Facades\Http; 
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
@@ -21,7 +21,7 @@ class PostController extends Controller
         $response = Http::withToken($token)
         ->get(env('API_URL') . '/blog',);
 
-        // $response = Http::timeout(1000)->withToken($token)->get('http://nginx_api/api/blog');
+        
         $posts = $response->json();
         return view('blog.index', compact('posts'));
        
@@ -35,15 +35,12 @@ class PostController extends Controller
             return redirect('/index')->with('error', 'Lütfen giriş yapınız.');
         }
 
-        // $response = Http::withToken($token)
-        // ->get(env('API_URL') . '/blog/',);
+      
 
         $response = Http::timeout(1000)->withToken($token)->get('http://nginx_api/api/blog/'.$id);
 
         $id= $response->json();
-        // $comment= $response->json();
-
-        // return view('blog.show', compact('post'));
+       
 
         return view('blog.show',[
             'post' => $id,
