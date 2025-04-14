@@ -32,10 +32,12 @@ class CommentResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('post_id')
                     ->required()
+                    ->label('Gönderi')
                     ->options(Post::pluck('title', 'id'))
                     ->searchable(),
                 Forms\Components\Select::make('user_id')
                     ->required()
+                    ->label('Kullanıcı')
                     ->options(User::pluck('name', 'id'))
                     ->searchable(),
                     
@@ -53,9 +55,11 @@ class CommentResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('post_id')
                     ->numeric()
+                    ->label('Gönderi')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user_id')
                     ->numeric()
+                    ->label('Kullanıcı')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
