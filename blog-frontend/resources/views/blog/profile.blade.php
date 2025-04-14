@@ -7,6 +7,47 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
+
+     <!-- Navbar -->
+     <nav class="bg-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-white text-2xl font-bold">Blog</span>
+                </div>
+
+                <div class="relative">
+                    <button id="menuButton" class="flex items-center space-x-1 text-gray-300 hover:text-white">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                        </svg>
+                    </button>
+
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                    <a href="/profile">
+                        <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                            <span>Profil</span>
+                        </button>
+                    </a>
+
+                        <form method="POST" action="{{ route('logout') }}" class="w-full">
+                            @csrf
+                            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/>
+                                </svg>
+                                <span>Çıkış Yap</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mx-auto px-4 py-8 max-w-2xl">
         <!-- Başarı Mesajı -->
         @if(session('success'))
@@ -25,6 +66,11 @@
             </ul>
         </div>
         @endif
+
+         <!-- geri dönüş butonu -->
+         <a href="/blog" class="inline-block mb-6 text-gray-600 hover:text-gray-800 transition-colors">
+            ← Geri Dön
+        </a>
 
         <form action="{{ route('profile.update') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @csrf
@@ -46,7 +92,7 @@
                     name="name"
                     value="{{ old('name', $user['name'] ?? '') }}"
 
-                    required>
+                    >
             </div>
 
             <!-- Mail -->
@@ -61,13 +107,13 @@
                     name="email"
                     value="{{ old('email', $user['email'] ?? '') }}"
 
-                    required>
+                    >
             </div>
 
             <!-- Şifre -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                    Şifre (Değiştirmek istemiyorsanız boş bırakın)
+                    Şifre 
                 </label>
                 <input 
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" 
@@ -91,12 +137,31 @@
             <!-- Butonlar -->
             <div class="flex items-center justify-between">
                 <button 
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                    class="bg-slate-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
                     type="submit">
                     Güncelle
                 </button>
             </div>
         </form>
     </div>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.add('hidden');
+        });
+
+        dropdownMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
 </body>
 </html>

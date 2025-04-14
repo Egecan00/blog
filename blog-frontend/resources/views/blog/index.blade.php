@@ -81,12 +81,29 @@
                              class="w-full h-48 object-cover">
                     </a>
                         <div class="p-6">
+                          
+                            <div class="flex flex-wrap gap-2 mb-2">
+                                <!-- Kategoriler -->
+                                @foreach($post['categories'] ?? [] as $category)
+                                <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                    {{ $category['name'] }}
+                                </span>
+                                @endforeach
+                                
+                                <!-- Etiketler -->
+                                @foreach($post['tags'] ?? [] as $tag)
+                                <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs">
+                                    #{{ $tag['name'] }}
+                                </span>
+                                @endforeach
+                            </div>
                             <a href="{{route ('blog.show',$post['id']) }}">  
                                 
-                            <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-indigo-600 transition-colors">
+                            <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-950 transition-colors">
                                 {{ $post['title'] }}
                             </h2>
                             </a>
+                            
                             <a href="{{route ('blog.show',$post['id']) }}">
                             <p class="text-gray-600 leading-relaxed">
                                 {{ Str::limit(strip_tags($post['content']), 40) }}
@@ -102,7 +119,7 @@
             @endif
         </div>
     </div>
-
+    
     <script>
         const menuButton = document.getElementById('menuButton');
         const dropdownMenu = document.getElementById('dropdownMenu');

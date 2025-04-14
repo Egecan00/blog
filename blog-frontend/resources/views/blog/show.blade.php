@@ -132,7 +132,7 @@
             </div>
             <button 
                 type="submit" 
-                class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                class="px-6 py-2 bg-slate-800 text-white rounded-lg transition-colors"
             >
                 Yorumu Gönder
             </button>
