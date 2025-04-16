@@ -91,7 +91,7 @@
             </h1>
 
             <!-- post İçeriği -->
-            <div class="prose max-w-none text-gray-700">
+            <div class="prose max-w-none w-full break-words overflow-auto text-gray-700">
                 {!! $post['content'] ?? '<p class="text-red-500">İçerik bulunamadı</p>' !!}
             </div>
         </div>
@@ -108,7 +108,7 @@
         </div>
 
         <!-- Yorumlar Bölümü -->
-<div class="max-w-3xl mx-auto px-4 py-8 mt-12">
+<div class="max-w-3xl mx-auto px-4 py-8 mt-13">
     <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-3">
             Yorumlar ({{ isset($post['comments']) ? count($post['comments']) : 0 }})

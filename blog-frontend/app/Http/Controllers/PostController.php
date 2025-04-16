@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $token = session('api_token');
         
@@ -19,7 +19,10 @@ class PostController extends Controller
         }
        
         $response = Http::withToken($token)
-        ->get(env('API_URL') . '/blog',);
+        ->get(env('API_URL') . '/blog',[
+            'category' => $request->category,
+            'tag' => $request->tag
+        ]);
 
         
         $posts = $response->json();

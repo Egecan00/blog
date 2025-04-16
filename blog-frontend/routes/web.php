@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PrivacyPolicyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +27,9 @@ Route::get('/signup', function () {
 Route::get('/login', function () {
     return view('/login');
 }); 
+
+Route::get('kvkk', [PrivacyPolicyController::class, 'showKvkk']);
+Route::get('gizlilik-politikasi', [PrivacyPolicyController::class, 'showPrivacyPolicy']);
 
 Route::put('profile',[ProfileController::class, 'update'])->name('profile.update');
 Route::get('profile', [ProfileController::class, 'show']);
