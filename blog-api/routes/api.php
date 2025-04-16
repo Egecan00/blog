@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PrivacyPolicyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\PostResource;
@@ -21,6 +22,9 @@ Route::get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function (){ //bu grubun içindeki tüm rotalar, yalnızca kimlik doğrulaması yapılmış kullanıcılar tarafından erişilebilir.
     // Route::resource('product', ProductController::class);
     // Route::apiResource('product',ProductController::class);
+    
+    Route::get('kvkk', [PrivacyPolicyController::class, 'kvkk']);
+    Route::get('gizlilik-politikasi', [PrivacyPolicyController::class, 'privacyPolicy']);
 
     Route::get('/blog',[PostController::class,'index'])->name('blog.index');
     Route::get('blog/{id}',[PostController::class,'show'])->name('blog.show');

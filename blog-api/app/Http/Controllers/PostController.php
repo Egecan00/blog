@@ -16,9 +16,6 @@ class PostController extends Controller
     public function index()
     {
         $post = Post::with('categories','tags','comments')->latest()->where('status', true)->get();
-        // $post = Post::with('categories','tags','comments')->get();
-        // $post = Post::where('status',true)->latest()->get();
-
     
         return response()->json([
             'posts' => $post,

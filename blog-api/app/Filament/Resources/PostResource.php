@@ -26,9 +26,9 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('content')
+                Forms\Components\Textarea::make('content')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(1000),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
                 Forms\Components\MultiSelect::make('categories')

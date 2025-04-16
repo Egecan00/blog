@@ -21,8 +21,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            ShieldSeeder::class,            
+            ShieldSeeder::class,  
+            PolicesSeeder::class          
         ]);
+
+        User::create([
+            'name' => 'Ege', 
+            'email' => 'Ege@gmail.com',
+            'password' => password_hash('12345678', PASSWORD_DEFAULT),
+        ])->assignRole('super_admin');
 
     }
 }

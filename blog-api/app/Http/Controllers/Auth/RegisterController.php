@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+        $user->assignRole('Writter');
         return response()->json(['message' => 'Kayıt başarıyla oluşturuldu!'], 201);
 
     
