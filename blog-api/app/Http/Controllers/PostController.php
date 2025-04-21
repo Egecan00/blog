@@ -14,12 +14,23 @@ use App\Jobs\SendCommentNotificationToAdmin;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $post = Post::with('categories','tags','comments')->latest()->where('status', true)->get();
+        $query = Post::with('categories','tags','comments')->latest()->where('status', true);
+
+        
+        if ($request->category) {
+            $query->whereHas('categories', fn($q) => $q->where('name', $request->category));
+        }
+
+        if ($request->tag) {
+            $query->whereHas('tags', fn($q) => $q->where('name', $request->tag));
+        }
+
+        $posts = $query->get();
 
         return response()->json([
-            'posts' => $post,
+            'posts' => $posts,
         ], 200);
 
     }
