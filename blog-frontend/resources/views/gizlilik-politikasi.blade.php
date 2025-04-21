@@ -6,7 +6,7 @@
     <title>Gizlilik Politikası</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 overflow-y-hidden">
+<body class="bg-gray-50">
 
     <!-- Navbar -->
     <nav class="bg-slate-800 shadow-lg">
@@ -48,7 +48,7 @@
         </div>
     </nav>
     
-    <div class="container mx-auto px-4 py-8 max-w-4xl min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
           <!-- geri dönüş butonu -->
           <a href="/blog" class="inline-block mb-6 text-gray-600 hover:text-gray-800 transition-colors">
             ← Geri Dön
@@ -74,12 +74,12 @@
             </div>
         </div>
 
-        <footer class="fixed bottom-0 left-0 w-full bg-slate-800 text-gray-100 py-4 px-4 border-t border-gray-200">
+        <footer class="fixed bottom-0 left-0 w-full bg-slate-800 text-gray-100 py-3 px-4 border-t border-gray-200">
     <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between text-sm">
           
             <div class="mb-2 md:mb-0">
-                © 2025 Site Adı. Tüm hakları saklıdır.
+                © 2025 Blog. Tüm hakları saklıdır.
             </div>
             
            

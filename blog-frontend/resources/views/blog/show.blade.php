@@ -102,9 +102,6 @@
                 {{ \Carbon\Carbon::parse($post['created_at'])->translatedFormat('d F Y') }}
             @endif
             
-            @if(isset($post['read_time']))
-             • {{ $post['read_time'] }}
-            @endif
         </div>
 
         <!-- Yorumlar Bölümü -->
@@ -159,7 +156,7 @@
                 </div>
                 
                 <!-- Yorum Metni -->
-                <p class="text-gray-600 whitespace-pre-wrap">{{ $comment['content'] }}</p>
+                <p class="text-gray-600 whitespace-pre-wrap w-full break-words overflow-auto">{{ $comment['content'] }}</p>
             </div>
         @endforeach
 
