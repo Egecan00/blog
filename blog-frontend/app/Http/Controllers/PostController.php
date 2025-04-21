@@ -17,16 +17,21 @@ class PostController extends Controller
         if (!$token) {
             return redirect('/index')->with('error', 'Lütfen giriş yapınız.');
         }
-       
+        
+        
         $response = Http::withToken($token)
         ->get(env('API_URL') . '/blog',[
             'category' => $request->category,
             'tag' => $request->tag
         ]);
-
         
+       
         $posts = $response->json();
-        return view('blog.index', compact('posts'));
+
+        return view('blog.index', ['posts' => $posts ?? []]);
+        
+        // $posts = $response->json();
+        // return view('blog.index', compact('posts'));
        
     }
 

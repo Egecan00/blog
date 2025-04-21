@@ -11,6 +11,27 @@
 </head>
 
 <body class="bg-gray-50 pt-16">
+@php
+        // Tüm kategorileri ve etiketleri merkezi olarak topla
+        $postsList = $posts['posts'] ?? [];
+        $allCategories = [];
+        $allTags = [];
+
+        if (!empty($postsList)) {
+            foreach ($postsList as $post) {
+                if (isset($post['categories'])) {
+                    foreach ($post['categories'] as $category) {
+                        $allCategories[$category['name']] = $category;
+                    }
+                }
+                if (isset($post['tags'])) {
+                    foreach ($post['tags'] as $tag) {
+                        $allTags[$tag['name']] = $tag;
+                    }
+                }
+            }
+        }
+    @endphp
     <!-- navbar üst -->
     <nav class="bg-slate-800 shadow-lg fixed top-0 left-0 right-0 z-50">
     <header class="bg-gray-800 shadow-sm sticky top-0 z-50">
@@ -100,8 +121,8 @@
                             }
                             @endphp
                             @foreach($allCategories as $category)
-                                <a href="?{{ http_build_query(array_merge(request()->query(), ['category' => $category['slug']])) }}" 
-                                   class="px-3 py-1 text-sm rounded-full {{ request('category') == $category['slug'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
+                                <a href="?{{ http_build_query(array_merge(request()->query(), ['category' => $category['name']])) }}" 
+                                   class="px-3 py-1 text-sm rounded-full {{ request('category') == $category['name'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
                                     {{ $category['name'] }}
                                 </a>
                             @endforeach
@@ -124,8 +145,8 @@
                             }
                             @endphp
                             @foreach($allTags as $tag)
-                                <a href="?{{ http_build_query(array_merge(request()->query(), ['tag' => $tag['slug']])) }}" 
-                                   class="px-3 py-1 text-sm rounded-full {{ request('tag') == $tag['slug'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
+                                <a href="?{{ http_build_query(array_merge(request()->query(), ['tag' => $tag['name']])) }}" 
+                                   class="px-3 py-1 text-sm rounded-full {{ request('tag') == $tag['name'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
                                     {{ $tag['name'] }}
                                 </a>
                             @endforeach
@@ -151,8 +172,8 @@
                         <h3 class="text-gray-400 text-sm font-medium mb-3">Kategoriler</h3>
                         <div class="flex flex-wrap gap-2">
                             @foreach($allCategories as $category)
-                                <a href="?{{ http_build_query(array_merge(request()->query(), ['category' => $category['slug']])) }}" 
-                                   class="px-3 py-1 text-sm rounded-full {{ request('category') == $category['slug'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
+                                <a href="?{{ http_build_query(array_merge(request()->query(), ['category' => $category['name']])) }}" 
+                                   class="px-3 py-1 text-sm rounded-full {{ request('category') == $category['name'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
                                     {{ $category['name'] }}
                                 </a>
                             @endforeach
@@ -163,8 +184,8 @@
                         <h3 class="text-gray-400 text-sm font-medium mb-3">Etiketler</h3>
                         <div class="flex flex-wrap gap-2">
                             @foreach($allTags as $tag)
-                                <a href="?{{ http_build_query(array_merge(request()->query(), ['tag' => $tag['slug']])) }}" 
-                                   class="px-3 py-1 text-sm rounded-full {{ request('tag') == $tag['slug'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
+                                <a href="?{{ http_build_query(array_merge(request()->query(), ['tag' => $tag['name']])) }}" 
+                                   class="px-3 py-1 text-sm rounded-full {{ request('tag') == $tag['name'] ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
                                     {{ $tag['name'] }}
                                 </a>
                             @endforeach
@@ -187,7 +208,7 @@
             </div>
         </div>
     @endif
-
+     
     
     
     <!-- post Container -->
@@ -196,6 +217,8 @@
         @php
             $postsList = $posts['posts'] ?? [];
         @endphp
+
+        
     
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
