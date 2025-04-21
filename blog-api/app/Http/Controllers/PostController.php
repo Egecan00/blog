@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http; 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Jobs\SendCommentNotificationToAdmin;
 
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $post = Post::with('categories','tags','comments')->latest()->where('status', true)->get();
-    
+
         return response()->json([
             'posts' => $post,
         ], 200);
@@ -47,14 +48,13 @@ class PostController extends Controller
            'post_id'=>$request->post_id,
            'user_id'=>$request->user()->id,
         ]);
-        
 
+        dispatch(new SendCommentNotificationToAdmin($comment));
+         
           return response()->json([
             'message'=>'Yorumunuz Gönderildi!',
             'comment'=> $comment
         ],200);
-
- 
 
     }
         
