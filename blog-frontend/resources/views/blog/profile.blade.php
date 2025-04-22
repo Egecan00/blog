@@ -9,7 +9,7 @@
 <body class="bg-gray-100">
 
      <!-- Navbar -->
-     <nav class="bg-slate-800 shadow-lg">
+     <nav class="bg-green-600 shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -137,7 +137,7 @@
             <!-- Butonlar -->
             <div class="flex items-center justify-between">
                 <button 
-                    class="bg-slate-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                    class="bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
                     type="submit">
                     Güncelle
                 </button>

@@ -9,7 +9,7 @@
 <body class="bg-gray-50">
 
      <!-- Navbar -->
-     <nav class="bg-slate-800 shadow-lg">
+     <nav class="bg-green-600 shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -56,7 +56,7 @@
         <!-- Başlık -->
         <header class="mb-8 border-b pb-6">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-                Kvkk Aydınlatma Metni
+                Kvkk Metni
             </h1>
         </header>
 
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <footer class="fixed bottom-0 left-0 w-full bg-slate-800 text-gray-100 py-3 px-4 border-t border-gray-200">
+        <footer class="fixed bottom-0 left-0 w-full bg-green-600 text-gray-100 py-3 px-4 border-t border-gray-200">
     <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between text-sm">
            
@@ -90,7 +90,7 @@
                 </a>
                 <a href="/kvkk" 
                    class="text-gray-100 transition-colors duration-200">
-                    KVKK Aydınlatma Metni
+                    KVKK Metni
                 </a>
             </div>
         </div>

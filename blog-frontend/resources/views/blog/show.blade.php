@@ -10,7 +10,7 @@
 
 <body class="bg-gray-50 min-h-screen">
     <!-- Navbar -->
-    <nav class="bg-slate-800 shadow-lg">
+    <nav class="bg-green-600 shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -129,7 +129,7 @@
             </div>
             <button 
                 type="submit" 
-                class="px-6 py-2 bg-slate-800 text-white rounded-lg transition-colors"
+                class="px-6 py-2 bg-green-600 text-white rounded-lg transition-colors"
             >
                 Yorumu Gönder
             </button>
