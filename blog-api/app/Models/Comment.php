@@ -14,6 +14,12 @@ class Comment extends Model
         'user_id'
     ];
 
+   
+    public function scopePublished($query) {
+        return $query->where('status', true);
+    }
+
+
     public function post()
     {
         return $this->belongsTo(Post::class);

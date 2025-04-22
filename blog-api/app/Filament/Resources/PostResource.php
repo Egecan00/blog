@@ -29,8 +29,7 @@ class PostResource extends Resource
                 Forms\Components\Textarea::make('content')
                     ->required()
                     ->maxLength(1000),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
+               
                 Forms\Components\MultiSelect::make('categories')
                     ->relationship('categories', 'name')
                     ->preload()
@@ -39,8 +38,23 @@ class PostResource extends Resource
                     ->relationship('tags', 'name')
                     ->preload()
                     ->label('Etiketler'),
-                Forms\Components\Toggle::make('status')
+                 Forms\Components\FileUpload::make('image')
+                    ->image(),    
+               
+                    Forms\Components\DateTimePicker::make('publish_at')
+                    ->label('Başlangıç Tarihi')
+                    ->default(now())
+                    ->seconds(false)
+                    ->timezone('Europe/Istanbul')
                     ->required(),
+                    Forms\Components\Toggle::make('status')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('expire_at')
+                    ->label('Bitiş Tarihi')
+                    ->seconds(false)
+                    ->timezone('Europe/Istanbul')
+                    ->required(),   
+                   
             ]);
     }
 
@@ -49,16 +63,20 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Başlık')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('content')
+                    ->label('İçerik')
                     ->searchable()
                     ->limit(20),
                 Tables\Columns\TextColumn::make('categories.name')->label('Kategoriler'),
                 Tables\Columns\TextColumn::make('tags.name')->label('Etiketler'),   
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->label('Resim'),
                 Tables\Columns\IconColumn::make('status')
+                    ->label('Durum')
                     ->boolean(),
-
+                Tables\Columns\TextColumn::make('publish_at')->label('Başlangıç Tarihi'),
+                Tables\Columns\TextColumn::make('expire_at')->label('Bitiş Tarihi'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

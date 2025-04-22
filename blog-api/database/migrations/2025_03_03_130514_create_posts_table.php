@@ -17,6 +17,8 @@ return new class extends Migration
             $table->longText('content');
             $table->string('image')->nullable();
             $table->boolean('status')->default(false);
+            $table->timestamp('publish_at');
+            $table->timestamp('expire_at');
             $table->timestamps();
         });
     }

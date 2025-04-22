@@ -37,8 +37,8 @@ class PrivacyPolicyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('type')->label('type'),
-                Tables\Columns\TextColumn::make('name')->label('Policy Name')
+                Tables\Columns\TextColumn::make('type')->label('Tipi'),
+                Tables\Columns\TextColumn::make('name')->label('Politika Adı')
                     ->limit(100),
             ])
             ->filters([

@@ -12,8 +12,33 @@ class Post extends Model
         'title',
         'content',
         'image',
-        'status'
+        'status',
+        'publish_at',
+        'expire_at'
     ];
+
+    protected $dates =[
+        'publish_at',
+        'expire_at'
+    ];
+
+    protected $casts =[
+        'publish_at'=> 'datetime',
+        'expire_at'=> 'datetime'
+    ];
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', true)
+            ->where(function($q) {
+                $q->where('publish_at', '<=', now())
+                ->orWhereNull('publish_at');
+            })
+            ->where(function($q) {
+                $q->where('expire_at', '>', now())
+                ->orWhereNull('expire_at');
+            });
+    }
 
     public function categories()
     {

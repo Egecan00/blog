@@ -26,15 +26,17 @@ class CommentResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('content')
+                    ->label('İçerik')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
                 Forms\Components\Select::make('post_id')
                     ->required()
                     ->label('Gönderi')
                     ->options(Post::pluck('title', 'id'))
                     ->searchable(),
+                 Forms\Components\Toggle::make('status')
+                    ->label('Durum')
+                    ->required(),   
                 Forms\Components\Select::make('user_id')
                     ->required()
                     ->label('Kullanıcı')
@@ -49,9 +51,11 @@ class CommentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('content')
+                    ->label('İçerik')
                     ->searchable()
                     ->limit(20),
                 Tables\Columns\IconColumn::make('status')
+                    ->label('Durum')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('post_id')
                     ->numeric()

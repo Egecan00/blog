@@ -16,7 +16,10 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $query = Post::with('categories','tags','comments')->latest()->where('status', true);
+        $query = Post::with('categories','tags','comments')
+        ->latest()
+        ->published()
+        ->where('status', true);
 
         
         if ($request->category) {
@@ -39,8 +42,13 @@ class PostController extends Controller
     {
       
         $post = Post::with(['categories', 'tags', 'comments' => function($query) {
-            $query->where('status', true)->with('user')->latest(); 
+            $query->where('status', true)->with('user')
+            ->published()
+            ->latest();
         }])->findOrFail($id);
+       
+
+       
 
         return response()->json($post);
        
