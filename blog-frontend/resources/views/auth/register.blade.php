@@ -1,42 +1,97 @@
-{{-- resources/views/auth/register.blade.php --}}
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('signup.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Kayıt Ol</title>
 </head>
-<body>
-    {{-- Hata mesajlarını göster --}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
-
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <form action="{{ route('register') }}" method="POST" class="col-12 col-md-6 col-lg-4">
+<body class="bg-gradient-to-br from-green-50 to-green-100">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <form action="{{ route('register') }}" method="POST" class="w-full max-w-md space-y-6">
             @csrf
-            <div class="card shadow">
-                <h2 class="title text-center">Kayıt Ol</h2>
-                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                    <input type="text" id="name" name="name" placeholder="Adınızı giriniz" class="form-control mb-3" required>
-                    <input type="email" id="email" name="email" placeholder="E-posta adresinizi giriniz" class="form-control mb-3" required>
-                    <input type="password" id="password" name="password" placeholder="Şifre giriniz" class="form-control mb-3" required>
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Şifre tekrarı giriniz" class="form-control mb-3" required>
-                    <button type="submit" class="btn btn-success w-100">Kayıt Ol</button>
+            
+          
+          
+
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
+                
+            
+
+                <div class="bg-gradient-to-r from-green-600 to-green-950 p-6">
+                    <h2 class="text-center text-2xl font-bold text-white tracking-wide">Yeni Hesap Oluştur</h2>
+                </div>
+
+                
+                <div class="px-8 py-10 space-y-6">
+
+                @if ($errors->any())
+                <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm">
+                    <ul class="list-disc list-inside text-red-700 space-y-1">
+                        @foreach ($errors->all() as $error)
+                            <li class="text-sm">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                   
+                    <div class="space-y-2">
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="İsminiz" 
+                            
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 placeholder-gray-400 transition-all"
+                        >
+                    </div>
+
+                    
+                    <div class="space-y-2">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="E-posta adresiniz" 
+                           
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 placeholder-gray-400 transition-all"
+                        >
+                    </div>
+
+                  
+                    <div class="space-y-2">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Şifreniz (min 8 karakter)" 
+                           
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 placeholder-gray-400 transition-all"
+                        >
+                    </div>
+
+                   
+                    <div class="space-y-2">
+                        <input 
+                            type="password" 
+                            id="password_confirmation" 
+                            name="password_confirmation" 
+                            placeholder="Şifrenizi tekrar girin" 
+                          
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 placeholder-gray-400 transition-all"
+                        >
+                    </div>
+
+                   
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-green-600 to-green-950 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-950 hover:to-green-600 transition-all transform hover:scale-[1.02] shadow-md"
+                    >
+                        Kayıt ol
+                    </button>
                 </div>
             </div>
         </form>
     </div>
 </body>
 </html>
-
-

@@ -199,7 +199,7 @@
                             @endforeach
                         </div>
                         <a href="{{route ('blog.show',$post['id']) }}">  
-                            <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-950 transition-colors">
+                            <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-green-600 transition-colors">
                                 {{ $post['title'] }}
                             </h2>
                         </a>
@@ -223,7 +223,7 @@
             <div class="mb-2 md:mb-0">© 2025 Blog. Tüm hakları saklıdır.</div>
             <div class="flex space-x-4">
                 <a href="/gizlilik-politikasi" class="text-gray-100 transition-colors duration-200">Gizlilik Politikası</a>
-                <a href="/kvkk" class="text-gray-100 transition-colors duration-200">KVKK Aydınlatma Metni</a>
+                <a href="/kvkk" class="text-gray-100 transition-colors duration-200">KVKK Metni</a>
             </div>
         </div>
     </div>

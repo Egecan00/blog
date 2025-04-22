@@ -115,7 +115,7 @@
        <!-- Yorum Formu -->
         @if(session('api_token'))
         <form action="{{ route('comments.store', $post['id']) }}" method="POST" class="mb-8">
-            @csrf
+            @csrf 
             <div class="mb-4">
                 <textarea 
                     name="content" 

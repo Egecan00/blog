@@ -1,28 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{ asset('style.css') }}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden bg-gradient-to-r from-green-600 to-green-900">
+            <div class="p-12 text-center space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-4xl font-bold text-white leading-tight">
+                        Sitemize Hoş Geldiniz
+                    </h2>
+                    <p class="text-xl text-white/90 mt-2">
+                       Sitemizi ziyaret etmek için aşşağıdan giriş yapabilirsiniz.
+                    </p>
+                </div>
 
-<body>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{{ url('/register') }}" 
+                       class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl">
+                        Kayıt Ol
+                    </a>
+                    <a href="{{ url('/login') }}" 
+                       class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 transition-colors duration-300">
+                        Giriş Yap
+                    </a>
+                </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-<div class="container-fluid d-flex justify-content-center align-items-center">
-    <div class="homebackground">
-        <h2 class="homebackgroundtext">Sitemizi ziyaret etmek için önce kayıt olmanız gerekir.</h2>
-        <h4 class="homebackgroundtext2">Daha önce bir hesabınız varsa giriş yapabilirsiniz.</h4>
-        <a href="{{ url('/register') }}" class="btn btn-dark homebackgroundbutton">kayıt ol</a>
-        <a href="{{ url('/login') }}" class="btn btn-dark homebackgroundbutton2">giriş yap</a>
+            </div>
+        </div>
     </div>
-</div>
-
-       
-
 </body>
-
-
 </html>

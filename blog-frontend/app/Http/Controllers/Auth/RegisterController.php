@@ -25,37 +25,30 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-         }
-
-        // Backend API'ye istek gönder
+     
+       
         $backendResponse = Http::post(env('API_URL').'/register', [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'password_confirmation' => $request->password_confirmation,
         ]);
+
+           
+
+        return redirect()->back()->withErrors([
+            'email' => 'Zaten bu E-posta kullanılıyor. Lütfen tekrar deneyin.',
+            'password' => 'Şifreniz Şifre Tekrarıyla Uyuşmuyor. Lütfen Tekrar Deneyiniz',
+            'password_confirmation' => 'Şifre Tekrarı Şifre İle Uyuşmuyor. Lütfen Tekrar Deneyin',
+        ])->withInput();
         
         if ($backendResponse->successful()) { return redirect('http://localhost:8001/login')->with('success', 'Kayıt başarılı!'); } 
-        else { return redirect()->back()->withErrors(['error' => 'Kayıt sırasında bir hata oluştu.'])->withInput(); }
         
-            // return redirect('http://localhost:8001/login');
-            // Backend yanıtını kontrol et
-            // if ($backendResponse->successful()) {
+          if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }   
+       
 
-            // return response()->json([
-            //     'message' => 'Kayıt başarılı!',
-            //     'data' => $backendResponse->json(),
-            //     'redirect_url' => route('login') // Login sayfasına yönlendirme URL'si
-            // ], 201);
-        // }
-        
-
-        // Backend hatası varsa, hata mesajını döndür
-        // return response()->json([
-        //     'error' => 'Backend kaydı sırasında bir hata oluştu.',
-        //     'details' => $backendResponse->json()
-        // ], $backendResponse->status());     
+       
     }
 }

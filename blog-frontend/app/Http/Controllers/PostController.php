@@ -29,9 +29,6 @@ class PostController extends Controller
         $posts = $response->json();
 
         return view('blog.index', ['posts' => $posts ?? []]);
-        
-        // $posts = $response->json();
-        // return view('blog.index', compact('posts'));
        
     }
 
@@ -43,13 +40,12 @@ class PostController extends Controller
             return redirect('/index')->with('error', 'Lütfen giriş yapınız.');
         }
 
-      
 
         $response = Http::timeout(1000)->withToken($token)->get('http://nginx_api/api/blog/'.$id);
 
         $id= $response->json();
-       
 
+       
         return view('blog.show',[
             'post' => $id,
             'comments'=> $id['comments'] ?? []

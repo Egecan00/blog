@@ -33,13 +33,16 @@ class LoginController extends Controller
             return redirect('/blog')->with('success', 'Başarıyla giriş yapıldı!'); 
         } 
 
+        return redirect()->back()->withErrors([
+            'email' => 'E-posta hatalı. Lütfen tekrar deneyin.',
+            'password' => 'Şifre hatalı Lütfen tekrar deneyin'
+        ])->withInput();
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('blog');
         }
 
-        return redirect()->back()->withErrors([
-            'email' => 'E-posta veya şifre hatalı. Lütfen tekrar deneyin.',
-        ])->withInput();
+       
     }
 
     public function logout(Request $request) {
