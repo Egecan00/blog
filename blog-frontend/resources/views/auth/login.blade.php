@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Giriş Yap</title>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-gray-100">
+<body class="bg-gradient-to-br from-green-50 to-green-100">
     <div class="min-h-screen flex items-center justify-center p-4">
         <form action="{{ route('login') }}" method="POST" class="w-full max-w-md space-y-6">
             @csrf
@@ -14,7 +14,7 @@
                 
                 
                 <div class="bg-gradient-to-r from-green-600 to-green-900 p-6">
-                    <h5 class="text-center text-2xl font-bold text-white tracking-wide">Hesabınıza Giriş Yapın</h5>
+                    <h5 class="text-center text-2xl font-bold text-white tracking-wide">Giriş Yap</h5>
                 </div>
 
                 
@@ -64,7 +64,7 @@
                   
                     <button 
                         type="submit" 
-                        class="w-full bg-gradient-to-r from-green-600 to-green-900 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-600 hover:to-green-900 transition-all transform hover:scale-[1.02] shadow-md"
+                        class="w-full bg-gradient-to-r from-green-600 to-green-900 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-950 hover:to-green-600 transition-all transform hover:scale-[1.02] shadow-md"
                     >
                         Giriş Yap
                     </button>

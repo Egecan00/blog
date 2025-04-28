@@ -19,7 +19,7 @@
             
 
                 <div class="bg-gradient-to-r from-green-600 to-green-950 p-6">
-                    <h2 class="text-center text-2xl font-bold text-white tracking-wide">Yeni Hesap Oluştur</h2>
+                    <h2 class="text-center text-2xl font-bold text-white tracking-wide">Kayıt ol</h2>
                 </div>
 
                 
