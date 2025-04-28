@@ -11,12 +11,10 @@ use Illuminate\Http\JsonResponse;
 
 class RegisterController extends Controller
 {
-    // Kayıt formunu göstermek için bir yöntem
 
-    // Kullanıcı kayıt işlemini gerçekleştirmek için bir yöntem
     public function register(Request $request): JsonResponse
     {
-        // Gelen veriyi doğrula
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -27,7 +25,7 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // Kullanıcıyı oluştur
+       
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
