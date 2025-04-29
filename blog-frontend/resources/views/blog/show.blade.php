@@ -9,12 +9,12 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen">
-    <!-- Navbar -->
-    <nav class="bg-green-600 shadow-lg">
+    
+    <nav class="bg-green-700 shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <span class="text-white text-2xl font-bold">Blog</span>
+                <a href="/blog"  <span class="text-white text-2xl font-bold">Blog</span> </a>
                 </div>
 
                 <div class="relative">
@@ -50,13 +50,13 @@
     </nav>
 
     <div class="max-w-3xl mx-auto px-4 py-8">
-        <!-- geri dönüş butonu -->
+        
         <a href="/blog" class="inline-block mb-6 text-gray-600 hover:text-gray-800 transition-colors">
             ← Geri Dön
         </a>
 
         <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-            <!-- post Resmi -->
+           
             @if(isset($post['image']) && !empty($post['image']))
             <img src="{{ ('http://localhost:8000'.'/'. $post['image']) }}" 
                  alt="{{ $post['title'] ?? '' }}"  
@@ -67,9 +67,9 @@
             </div>
             @endif
 
-            <!-- kategori ve etiketler -->
+           
             <div class="flex flex-wrap gap-2 mb-4">
-                <!-- kategori -->
+               
                 @foreach($post['categories'] ?? [] as $category)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
                     {{ $category['name'] }}
@@ -77,7 +77,7 @@
                 @endforeach
                 
                 
-                <!-- etiketler -->
+               
                     @foreach($post['tags'] ?? [] as $tag)
                     <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
                         #{{ $tag['name'] }}
@@ -85,18 +85,18 @@
                     @endforeach
             </div>
 
-            <!-- post Başlığı -->
+           
             <h1 class="text-3xl font-bold text-gray-800 mb-4">
                 {{ $post['title'] ?? 'Başlıksız Gönderi' }}
             </h1>
 
-            <!-- post İçeriği -->
+        
             <div class="prose max-w-none w-full break-words overflow-auto text-gray-700">
                 {!! $post['content'] ?? '<p class="text-red-500">İçerik bulunamadı</p>' !!}
             </div>
         </div>
 
-        <!-- tarih ve okuma Süresi -->
+        
         <div class="mt-4 text-sm text-gray-500">
             @if(isset($post['created_at']))
                 {{ \Carbon\Carbon::parse($post['created_at'])->translatedFormat('d F Y') }}
@@ -104,7 +104,7 @@
             
         </div>
 
-        <!-- Yorumlar Bölümü -->
+      
 <div class="max-w-3xl mx-auto px-4 py-8 mt-13">
     <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-3">
@@ -112,7 +112,7 @@
         </h2>
 
        
-       <!-- Yorum Formu -->
+      
         @if(session('api_token'))
         <form action="{{ route('comments.store', $post['id']) }}" method="POST" class="mb-8">
             @csrf 
@@ -129,7 +129,7 @@
             </div>
             <button 
                 type="submit" 
-                class="px-6 py-2 bg-green-600 text-white rounded-lg transition-colors"
+                class="px-6 py-2 bg-green-700 text-white rounded-lg transition-colors"
             >
                 Yorumu Gönder
             </button>
@@ -137,25 +137,25 @@
       @endif
       
     
-      <!-- Yorum Listesi -->
+     
 <div class="space-y-6">
     @if(isset($post['comments']) && is_array($post['comments']))
         @foreach($post['comments'] as $comment)
-            <!-- Yorum Kartı -->
+           
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                 <div class="flex items-center justify-between mb-2">
-                    <!-- Yorum Yazan -->
+                   
                     <span class="font-semibold text-gray-700">
                         {{ $comment['user']['name']}}
                     </span>
                     
-                    <!-- Yorum Tarihi -->
+                    
                     <span class="text-sm text-gray-500">
                         {{ \Carbon\Carbon::parse($comment['created_at'])->translatedFormat('d F Y H:i') }}
                     </span>
                 </div>
                 
-                <!-- Yorum Metni -->
+                
                 <p class="text-gray-600 whitespace-pre-wrap w-full break-words overflow-auto">{{ $comment['content'] }}</p>
             </div>
         @endforeach

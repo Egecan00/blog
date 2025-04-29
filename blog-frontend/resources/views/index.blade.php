@@ -11,7 +11,7 @@
             <div class="p-12 text-center space-y-8">
                 <div class="space-y-4">
                     <h2 class="text-4xl font-bold text-white leading-tight">
-                        Sitemize Hoş Geldiniz
+                        Hoş Geldiniz
                     </h2>
                     <p class="text-xl text-white/90 mt-2">
                        Sitemizi ziyaret etmek için aşşağıdan giriş yapabilirsiniz.

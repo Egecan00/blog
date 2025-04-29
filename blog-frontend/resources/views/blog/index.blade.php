@@ -32,11 +32,11 @@
     }
 @endphp
 
-<nav class="bg-green-600 shadow-lg fixed top-0 left-0 right-0 z-50">
-    <header class="bg-green-600 shadow-sm sticky top-0 z-50">
+<nav class="bg-green-700 shadow-lg fixed top-0 left-0 right-0 z-50">
+    <header class="bg-green-700 shadow-sm sticky top-0 z-50">
         <nav class="max-w-6xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <a class="text-2xl font-bold text-gray-100">Blog</a>
+                <a href="/blog" class="text-2xl font-bold text-gray-100">Blog</a>
                 <div class="flex items-center gap-6">
                   
                     <div class="hidden md:flex items-center gap-4 relative">
@@ -217,7 +217,7 @@
     </div>
 </div>
 
-<footer class="fixed bottom-0 left-0 w-full bg-green-600 text-gray-100 py-3 px-4 border-t border-gray-200">
+<footer class="fixed bottom-0 left-0 w-full bg-green-700 text-gray-100 py-3 px-4 border-t border-gray-200">
     <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between text-sm">
             <div class="mb-2 md:mb-0">© 2025 Blog. Tüm hakları saklıdır.</div>

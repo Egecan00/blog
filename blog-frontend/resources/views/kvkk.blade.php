@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <span class="text-white text-2xl font-bold">Blog</span>
+                <a href="/blog" <span class="text-white text-2xl font-bold">Blog</span> </a>
                 </div>
 
                 <div class="relative">

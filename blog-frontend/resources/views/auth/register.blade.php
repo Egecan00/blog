@@ -82,6 +82,13 @@
                         >
                     </div>
 
+                    <p class="text-center text-gray-600 text-sm">
+                        Hesabınız var mı? 
+                        <a href="{{ url('/login') }}" class="font-semibold text-green-600 hover:text-green-500 underline transition-colors">
+                            Hemen Giriş Yapın
+                        </a>
+                    </p>
+
                    
                     <button 
                         type="submit" 
