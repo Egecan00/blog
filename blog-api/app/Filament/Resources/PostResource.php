@@ -24,9 +24,11 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
+                    ->label('Başlık')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('content')
+                    ->label('İçerik')
                     ->required()
                     ->maxLength(1000),
                
@@ -39,6 +41,7 @@ class PostResource extends Resource
                     ->preload()
                     ->label('Etiketler'),
                  Forms\Components\FileUpload::make('image')
+                    ->label('Resim')
                     ->image(),    
                
                     Forms\Components\DateTimePicker::make('publish_at')
