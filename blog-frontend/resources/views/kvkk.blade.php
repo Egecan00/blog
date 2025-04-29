@@ -8,8 +8,7 @@
 </head>
 <body class="bg-gray-50">
 
-     <!-- Navbar -->
-     <nav class="bg-green-600 shadow-lg">
+     <nav class="bg-green-700 shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -49,18 +48,15 @@
     </nav>
 
     <div class="container mx-auto px-4 py-8 max-w-4xl">
-          <!-- geri dönüş butonu -->
           <a href="/blog" class="inline-block mb-6 text-gray-600 hover:text-gray-800 transition-colors">
             ← Geri Dön
         </a>
-        <!-- Başlık -->
         <header class="mb-8 border-b pb-6">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
                 Kvkk Metni
             </h1>
         </header>
 
-        <!-- Name Kutusu -->
         <div class="border border-gray-200 rounded-lg p-4 md:p-6 bg-white mb-6 shadow-sm">
             <div class="flex items-center">
                 <span class="text-gray-500 mr-3">•</span>
@@ -74,7 +70,7 @@
             </div>
         </div>
 
-        <footer class="fixed bottom-0 left-0 w-full bg-green-600 text-gray-100 py-3 px-4 border-t border-gray-200">
+        <footer class="fixed bottom-0 left-0 w-full bg-green-700 text-gray-100 py-3 px-4 border-t border-gray-200">
     <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between text-sm">
            
